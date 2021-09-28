@@ -1,5 +1,6 @@
 require('babel-polyfill');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
   entry: {
@@ -13,9 +14,7 @@ module.exports = {
       loader: 'babel-loader',
       exclude: '/node_modules/'
     }, 
-
-  
-
+    
     {
       test: /\.css$/,
       use: [
@@ -26,21 +25,11 @@ module.exports = {
           options: { sourceMap: true }
         }, {
           loader: 'postcss-loader',
-          options: { sourceMap: true, config: { path: 'postcss.config.js' } }
+          options: { sourceMap: true, config: { path: './postcss.config.js' } }
         }
       ]
-    },
-    {
-        loader: 'postcss-loader',
-        options: {
-            plugins: [
-                autoprefixer({
-                    browsers:['ie >= 8', 'last 4 version']
-                })
-            ],
-            sourceMap: true
-        }
-    },
+    }, 
+
     {
       test: /\.s[ac]ss$/i,
       use: [
@@ -51,15 +40,13 @@ module.exports = {
         options: { sourceMap: true }
       }, {
         loader: 'postcss-loader',
-        options: { sourceMap: true, config: { path: 'postcss.config.js' } }
+        options: { sourceMap: true, config: { path: './postcss.config.js' } }
       },{
           loader: "sass-loader", // compiles Sass to CSS
           options: { sourceMap: true }
       }]
-    },
+    },  
     
-
-
     {
       test: /\.pug$/,
       loader: 'pug-loader'
